@@ -12,13 +12,13 @@ class CodesClient extends Client {
       messageCacheMaxSize: 1000,
     });
     // Let command_path = path.commands
-    // this.on('message', message => {
-    //   if (message.content.indexOf(this.prefix) !== 0) return;
-    //   const args = message.content.slice(this.prefix.length).trim().split(/ +/g);
-    //   const command = args.shift().toLowerCase();
-    //   let c = require((command_path.endsWith("/")) ? command_path + `${command}.js`: command_path + `/${command}.js`)
-    //   c.run()
-    // })
+     this.on('message', message => {
+       if (message.content.indexOf(this.prefix) !== 0) return;
+       const args = message.content.slice(this.prefix.length).trim().split(/ +/g);
+       const command = args.shift().toLowerCase();
+       let c = require((command_path.endsWith("/")) ? command_path + `${command}.js`: command_path + `/${command}.js`)
+       c.run()
+     })
     this.token = token;
     this.owner = owner;
     this.prefix = prefix;
